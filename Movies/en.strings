@@ -1,0 +1,4 @@
+"InsertMovieViewControllerFeedbackViewLoadingContent" = "Loading";
+"InsertMovieViewControllerFeedbackViewSuccessInsertMovie" = "Success to insert movie";
+"InsertMovieViewControllerFeedbackViewFailureInsertMovie" = "Failure to insert movie";
+"InsertMovieViewControllerFeedbackViewInternetConnection" = "Check your internet connection";
