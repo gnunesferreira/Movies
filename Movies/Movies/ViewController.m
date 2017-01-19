@@ -9,8 +9,13 @@
 #import "ViewController.h"
 
 #import "InsertMovieViewController.h"
+#import "MovieBusinessObject.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *contentTableView;
+
+@property (nonatomic, strong) NSArray<MovieBusinessModel *> *moviesArray;
 
 @end
 
@@ -18,7 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.moviesArray = [[NSArray alloc] init];
+    self.moviesArray = [MovieBusinessObject getAllMoviesToShow];
+    
+    self.contentTableView.delegate = self;
+    self.contentTableView.dataSource = self;
 }
 
 
@@ -34,6 +44,34 @@
     InsertMovieViewController *insertMoviewViewController = [[InsertMovieViewController alloc] initWithNibName:@"InsertMovieViewController" bundle:nil];
     [insertMoviewViewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     [self presentViewController:insertMoviewViewController animated:YES completion:nil];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.moviesArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    
+    MovieBusinessModel *movie = [self.moviesArray objectAtIndex:indexPath.row];
+    [cell.textLabel setText:movie.title];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 @end

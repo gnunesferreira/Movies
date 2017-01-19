@@ -10,9 +10,6 @@
 
 @implementation MoviesManager
 
-- (void)insertMovieWithCompletionNotification:(kInsertMovieCompletionNotification)completionNotification {
-    
-    
-}
+
 
 @end
