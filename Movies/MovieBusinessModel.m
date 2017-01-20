@@ -8,9 +8,11 @@
 
 #import "MovieBusinessModel.h"
 
+#import "Movie+CoreDataClass.h"
+
 @implementation MovieBusinessModel
 
-- (instancetype)initWithActors:(NSString *)actors withAwards:(NSString *)awards withCountry:(NSString *)country withDirector:(NSString *)director withGenre:(NSString *)genre withLanguage:(NSString *)language withImdbRating:(double)imdbRating withImdbId:(double)imdbId withMetascore:(NSString *)metascore withPlot:(NSString *)plot withPoster:(NSString *)poster withRated:(NSString *)rated withReleased:(NSString *)released withResponse:(NSString *)response withRuntime:(NSString *)runtime withTitle:(NSString *)title withType:(NSString *)type withWriter:(NSString *)writer withYear:(NSNumber *)year {
+- (instancetype)initWithActors:(NSString *)actors withAwards:(NSString *)awards withCountry:(NSString *)country withDirector:(NSString *)director withGenre:(NSString *)genre withLanguage:(NSString *)language withImdbRating:(NSString *)imdbRating withImdbId:(NSString *)imdbId withMetascore:(NSString *)metascore withPlot:(NSString *)plot withPoster:(NSString *)poster withRated:(NSString *)rated withReleased:(NSString *)released withResponse:(NSString *)response withRuntime:(NSString *)runtime withTitle:(NSString *)title withType:(NSString *)type withWriter:(NSString *)writer withYear:(NSString *)year {
     
     self = [super init];
     
@@ -59,7 +61,44 @@
                       withTitle:movieManagedObject.title
                        withType:movieManagedObject.type
                      withWriter:movieManagedObject.writer
-                       withYear:[NSNumber numberWithInt:movieManagedObject.year]];
+                       withYear:movieManagedObject.year];
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    
+    return [self initWithActors:[dictionary objectForKey:@"Actors"]
+                     withAwards:[dictionary objectForKey:@"Awards"]
+                    withCountry:[dictionary objectForKey:@"Country"]
+                   withDirector:[dictionary objectForKey:@"Director"]
+                      withGenre:[dictionary objectForKey:@"Genre"]
+                   withLanguage:[dictionary objectForKey:@"Language"]
+                 withImdbRating:[dictionary objectForKey:@"imdbRating"]
+                     withImdbId:[dictionary objectForKey:@"imdbID"]
+                  withMetascore:[dictionary objectForKey:@"Metascore"]
+                       withPlot:[dictionary objectForKey:@"Plot"]
+                     withPoster:[dictionary objectForKey:@"Poster"]
+                      withRated:[dictionary objectForKey:@"Rated"]
+                   withReleased:[dictionary objectForKey:@"Realesed"]
+                   withResponse:[dictionary objectForKey:@"Response"]
+                    withRuntime:[dictionary objectForKey:@"Runtime"]
+                      withTitle:[dictionary objectForKey:@"Title"]
+                       withType:[dictionary objectForKey:@"Type"]
+                     withWriter:[dictionary objectForKey:@"Writer"]
+                       withYear:[dictionary objectForKey:@"Year"]
+            ];
+}
+
+- (NSArray<MovieBusinessModel *> *)arrayWithMoviesManagedObjectArray:(NSArray<Movie *> *)moviesManagedObjectArray {
+    
+    __block NSMutableArray<MovieBusinessModel *> *result = [[NSMutableArray alloc] init];
+    
+    [moviesManagedObjectArray enumerateObjectsUsingBlock:^(Movie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        MovieBusinessModel *newInstance = [[MovieBusinessModel alloc] initWithMovieManagedObject:obj];
+        [result addObject:newInstance];
+    }];
+    
+    return result;
 }
 
 @end

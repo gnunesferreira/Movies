@@ -18,8 +18,8 @@
 @property (nonatomic,strong) NSString *director;
 @property (nonatomic,strong) NSString *genre;
 @property (nonatomic,strong) NSString *language;
-@property (nonatomic) double imdbRating;
-@property (nonatomic) double imdbId;
+@property (nonatomic,strong) NSString *imdbRating;
+@property (nonatomic,strong) NSString *imdbId;
 @property (nonatomic,strong) NSString *metascore;
 @property (nonatomic,strong) NSString *plot;
 @property (nonatomic,strong) NSString *poster;
@@ -30,8 +30,12 @@
 @property (nonatomic,strong) NSString *title;
 @property (nonatomic,strong) NSString *type;
 @property (nonatomic,strong) NSString *writer;
-@property (nonatomic) NSNumber *year;
+@property (nonatomic,strong) NSString *year;
 
-- (instancetype)initWithActors:(NSString *)actors withAwards:(NSString *)awards withCountry:(NSString *)country withDirector:(NSString *)director withGenre:(NSString *)genre withLanguage:(NSString *)language withImdbRating:(double)imdbRating withImdbId:(double)imdbId withMetascore:(NSString *)metascore withPlot:(NSString *)plot withPoster:(NSString *)poster withRated:(NSString *)rated withReleased:(NSString *)released withResponse:(NSString *)response withRuntime:(NSString *)runtime withTitle:(NSString *)title withType:(NSString *)type withWriter:(NSString *)writer withYear:(NSNumber *)year;
+- (instancetype)initWithActors:(NSString *)actors withAwards:(NSString *)awards withCountry:(NSString *)country withDirector:(NSString *)director withGenre:(NSString *)genre withLanguage:(NSString *)language withImdbRating:(NSString *)imdbRating withImdbId:(NSString *)imdbId withMetascore:(NSString *)metascore withPlot:(NSString *)plot withPoster:(NSString *)poster withRated:(NSString *)rated withReleased:(NSString *)released withResponse:(NSString *)response withRuntime:(NSString *)runtime withTitle:(NSString *)title withType:(NSString *)type withWriter:(NSString *)writer withYear:(NSString *)year;
+- (instancetype)initWithMovieManagedObject:(Movie *)movieManagedObject;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+- (NSArray<MovieBusinessModel *> *)arrayWithMoviesManagedObjectArray:(NSArray<Movie *> *)moviesManagedObjectArray;
 
 @end

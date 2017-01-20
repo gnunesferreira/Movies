@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^kCloseCompletion)(void);
+
 @interface InsertMovieViewController : UIViewController
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withCloseCompletion:(kCloseCompletion)closeCompletion;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "MovieBusinessModel.h"
+
 typedef void(^kSuccessCompletionNotification)(void);
 typedef void(^kFailureCompletionNotification)(NSError *error);
 
@@ -15,6 +17,8 @@ typedef void(^kFailureCompletionNotification)(NSError *error);
 
 + (instancetype)sharedInstance;
 
-- (void)insertMovieWithSuccessCompletionNotification:(kSuccessCompletionNotification)sucessCompletionNotification withFailureCompletionNotification:(kFailureCompletionNotification)failureCompletionNotification;
+- (void)insertMovieWithName:(NSString *)movieName withSuccessCompletionNotification:(kSuccessCompletionNotification)sucessCompletionNotification withFailureCompletionNotification:(kFailureCompletionNotification)failureCompletionNotification;
+- (NSArray<MovieBusinessModel *> *)getAllMoviesFromDatabase;
+- (BOOL)deleteMovieWithImbdID:(NSString *)imdbId;
 
 @end

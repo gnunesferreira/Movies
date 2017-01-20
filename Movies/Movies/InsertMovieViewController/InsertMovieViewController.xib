@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,6 +16,7 @@
                 <outlet property="feedbackImageView" destination="Wu3-jp-CK6" id="FLC-y2-S5r"/>
                 <outlet property="feedbackLabel" destination="Aac-C8-w2F" id="qHu-Re-dcy"/>
                 <outlet property="feedbackView" destination="tSs-FZ-DtL" id="epw-E7-Jqj"/>
+                <outlet property="movieNameTextField" destination="IWv-7g-xN4" id="Z2P-sP-RK5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,7 +38,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="240" height="145"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bf-Hy-VLl">
-                                    <rect key="frame" x="73.5" y="18" width="94" height="20.5"/>
+                                    <rect key="frame" x="73" y="18" width="94" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -48,6 +49,9 @@
                                         <constraint firstAttribute="width" constant="60" id="491-H8-YEh"/>
                                     </constraints>
                                     <state key="normal" title="Insert"/>
+                                    <connections>
+                                        <action selector="inserAction:" destination="-1" eventType="touchUpInside" id="T0o-So-L7h"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erU-bI-P5S">
                                     <rect key="frame" x="8" y="107" width="60" height="30"/>
@@ -55,6 +59,9 @@
                                         <constraint firstAttribute="width" constant="60" id="A0N-Dn-Clf"/>
                                     </constraints>
                                     <state key="normal" title="Cancel"/>
+                                    <connections>
+                                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="gIO-CI-C5C"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Movie name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWv-7g-xN4">
                                     <rect key="frame" x="52" y="59" width="140" height="30"/>
@@ -66,7 +73,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="IWv-7g-xN4" firstAttribute="centerX" secondItem="C3h-6y-McS" secondAttribute="centerX" constant="2" id="58e-HU-wk7"/>
                                 <constraint firstAttribute="bottomMargin" secondItem="fwj-jj-guf" secondAttribute="bottom" id="WdZ-Rf-Iwp"/>
@@ -78,10 +85,10 @@
                                 <constraint firstItem="IWv-7g-xN4" firstAttribute="top" secondItem="0Bf-Hy-VLl" secondAttribute="bottom" constant="20" id="x5k-7n-Ttu"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSs-FZ-DtL" userLabel="Feedback View">
+                        <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSs-FZ-DtL" userLabel="Feedback View">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="145"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wu3-jp-CK6">
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="Wu3-jp-CK6">
                                     <rect key="frame" x="90" y="42" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="BAy-tH-alf"/>
@@ -93,13 +100,13 @@
                                     <color key="color" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </activityIndicatorView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aac-C8-w2F">
-                                    <rect key="frame" x="99" y="112" width="42" height="20.5"/>
+                                    <rect key="frame" x="99" y="112" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="Wu3-jp-CK6" firstAttribute="centerX" secondItem="tSs-FZ-DtL" secondAttribute="centerX" id="EL1-gs-WKQ"/>
                                 <constraint firstItem="Aac-C8-w2F" firstAttribute="centerX" secondItem="tSs-FZ-DtL" secondAttribute="centerX" id="Iyf-m8-Lqz"/>
@@ -145,4 +152,7 @@
             <point key="canvasLocation" x="64.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="check" width="32" height="32"/>
+    </resources>
 </document>

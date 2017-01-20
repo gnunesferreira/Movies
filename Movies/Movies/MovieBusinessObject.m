@@ -12,10 +12,19 @@
 
 @implementation MovieBusinessObject
 
-- (NSArray<MovieBusinessModel *> *)getAllMoviesToShow {
++ (NSArray<MovieBusinessModel *> *)getAllMoviesToShow {
+
+    return [[MoviesManager sharedInstance] getAllMoviesFromDatabase];
+}
+
++ (void)insertMovieWithName:(NSString *)movieName withSuccessCompletionNotification:(kSuccessCompletionNotification)sucessCompletionNotification withFailureCompletionNotification:(kFailureCompletionNotification)failureCompletionNotification {
+
+    [[MoviesManager sharedInstance] insertMovieWithName:movieName withSuccessCompletionNotification:sucessCompletionNotification withFailureCompletionNotification:failureCompletionNotification];
+}
+
++ (BOOL)deleteMovieWithImbdID:(NSString *)imdbId {
     
-//    Get all movies with business manager
-    return nil;
+    return [[MoviesManager sharedInstance] deleteMovieWithImbdID:imdbId];
 }
 
 @end

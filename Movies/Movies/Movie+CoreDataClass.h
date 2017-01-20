@@ -2,7 +2,7 @@
 //  Movie+CoreDataClass.h
 //  Movies
 //
-//  Created by Guilherme Ferreira on 18/01/17.
+//  Created by Guilherme Ferreira on 19/01/17.
 //  Copyright © 2017 Guilherme Nunes Ferreira. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
